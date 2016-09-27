@@ -5,8 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Initialize mongoose schemas
+require('./models/bear');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var bears = require('./routes/bear');
 
 var mongoose   = require('mongoose');
 // connect to mongodb
@@ -28,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/bears', bears);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
